@@ -1,0 +1,17 @@
+Sub CreateSheetsFromList()
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim i As Long
+    
+    ' Specify the worksheet containing the list of names
+    Set ws = ThisWorkbook.Sheets("Sheet1") ' Change "Sheet1" to the name of your worksheet
+    
+    ' No need to find the last row since we know it's A11
+    lastRow = 11
+    
+    ' Loop through the list of names and create a new sheet for each name
+    For i = 1 To lastRow
+        ThisWorkbook.Sheets.Add(After:=ThisWorkbook.Sheets(ThisWorkbook.Sheets.Count)).Name = ws.Cells(i, "A").Value
+    Next i
+    
+End Sub
